@@ -1,22 +1,34 @@
-import { Geist, Geist_Mono, Raleway, DM_Sans } from "next/font/google"
+import type { Metadata } from "next"
+import { Geist_Mono, IBM_Plex_Sans_Thai } from "next/font/google"
 
 import "./globals.css"
+import { AuthProvider } from "@/components/auth/auth-provider"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/sonner"
-import { TooltipProvider } from "@/components/ui/tooltip"
+import { Toaster } from "@/components/ui/Sonner"
+import { TooltipProvider } from "@/components/ui/Tooltip"
+import { site } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
-const dmSansHeading = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-heading",
+// One font for the whole app: IBM Plex Sans Thai (static font, so weights
+// must be listed). globals.css maps --font-heading to the same variable.
+const fontSans = IBM_Plex_Sans_Thai({
+  subsets: ["thai", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
 })
-
-const raleway = Raleway({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export const metadata: Metadata = {
+  title: {
+    default: `${site.name} | ${site.tagline}`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+}
 
 export default function RootLayout({
   children,
@@ -25,19 +37,20 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="th"
       suppressHydrationWarning
       className={cn(
         "antialiased",
-        fontMono.variable,
         "font-sans",
-        raleway.variable,
-        dmSansHeading.variable
+        fontSans.variable,
+        fontMono.variable
       )}
     >
       <body>
         <ThemeProvider>
-          <TooltipProvider>{children}</TooltipProvider>
+          <AuthProvider>
+            <TooltipProvider>{children}</TooltipProvider>
+          </AuthProvider>
           <Toaster />
         </ThemeProvider>
       </body>
