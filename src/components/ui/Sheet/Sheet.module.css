@@ -45,7 +45,7 @@
   }
 
   .title {
-    @apply font-heading text-base font-medium text-foreground;
+    @apply font-heading text-base font-semibold text-foreground;
   }
 
   .description {

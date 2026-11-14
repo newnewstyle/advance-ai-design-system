@@ -15,7 +15,7 @@ Content catalogue for this wiki. Update when entries or their descriptions chang
 
 ### Systems
 
-- [[design-tokens]] — how tokens are organised, the three-place rule, token families, and known issues (self-referencing font tokens, duplicate values, two primaries, grey charts, heading weight)
+- [[design-tokens]] — how tokens are organised, the three-place rule, token families, and known issues: open (self-referencing font tokens, duplicate values, grey charts) and resolved (two primaries, heading weight)
 
 ### Decisions
 

@@ -24,7 +24,7 @@
   }
 
   .title {
-    @apply font-heading text-base leading-snug font-medium;
+    @apply font-heading text-base leading-snug font-semibold;
   }
 
   [data-slot="card"][data-size="sm"] .title {

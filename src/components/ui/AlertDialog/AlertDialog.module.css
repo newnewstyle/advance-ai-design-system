@@ -35,7 +35,7 @@
   }
 
   .title {
-    @apply font-heading text-base font-medium;
+    @apply font-heading text-base font-semibold;
   }
 
   .description {
