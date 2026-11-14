@@ -58,6 +58,7 @@ import {
   CardTitle,
 } from "@/components/ui/Card"
 import { Checkbox } from "@/components/ui/Checkbox"
+import { ProductCard } from "@/components/ui/ProductCard"
 import {
   Dialog,
   DialogClose,
@@ -181,6 +182,27 @@ const payments = [
   { tenant: "มาลี ศรีสุข", house: "45", amount: 8000, status: "due" },
   { tenant: "นิรันดร์ ทองดี", house: "8/1", amount: 5500, status: "overdue" },
 ] as const
+
+const products = [
+  {
+    imageSrc: "/demo/product-aircon.svg",
+    name: "แอร์ติดผนัง Inverter 12,000 BTU",
+    brand: "ทองเย็น",
+    price: 15900,
+  },
+  {
+    imageSrc: "/demo/product-heater.svg",
+    name: "เครื่องทำน้ำอุ่น 4,500 วัตต์",
+    brand: "อุ่นใจ",
+    price: 3290,
+  },
+  {
+    imageSrc: "/demo/product-fridge.svg",
+    name: "ตู้เย็น 2 ประตู 7.4 คิว",
+    brand: "สดเสมอ",
+    price: 8990,
+  },
+]
 
 const statusInfo = {
   paid: { label: "ชำระแล้ว", icon: CircleCheckIcon, variant: "secondary" },
@@ -505,6 +527,18 @@ export function ComponentGallery() {
                 </TableRow>
               </TableFooter>
             </Table>
+          </Demo>
+
+          <Demo
+            name="ProductCard"
+            description="การ์ดสินค้า รูป ยี่ห้อ ชื่อ และราคา (ข้อมูลตัวอย่าง)"
+            wide
+          >
+            <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3">
+              {products.map((p) => (
+                <ProductCard key={p.name} {...p} />
+              ))}
+            </div>
           </Demo>
 
           <Demo name="Card" description="กล่องเนื้อหา ขนาดปกติและขนาดเล็ก">
