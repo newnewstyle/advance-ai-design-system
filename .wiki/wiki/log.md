@@ -27,3 +27,9 @@ rg '^## \[.* ingest' wiki/log.md          # all ingests
 - Updated: [[design-tokens]] (Known issues 3 and 5 marked resolved with history kept, Evidence, Sidebar row, Typography), index entry
 - Contradictions: the heading-weight contradiction is resolved by following [[agents-md]]
 - Open questions: font token self-reference (issue 1) remains
+
+## [2026-11-14] update | Resolve font token self-reference
+- Code: next/font variables renamed to `--font-plex-thai` / `--font-geist-mono`; `--font-sans`, `--font-heading`, `--font-mono` tokens read them; AGENTS.md font lines updated
+- Updated: [[design-tokens]] (Known issues 1 resolved with history kept, Font row, Where to look, Evidence), [[agents-md]] and [[globals-css]] (supersession notes), index entry
+- Contradictions: none
+- Open questions: duplicate-value tokens (issue 2) and grey chart tokens (issue 4, phase 4) remain

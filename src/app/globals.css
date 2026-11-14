@@ -76,10 +76,12 @@
 }
 
 @theme inline {
-  /* One font family (IBM Plex Sans Thai, from next/font) for body and headings */
-  --font-sans: var(--font-sans);
-  --font-heading: var(--font-sans);
-  --font-mono: var(--font-mono);
+  /* One font family (IBM Plex Sans Thai, from next/font) for body and headings.
+     next/font sets --font-plex-thai / --font-geist-mono on <html>; the theme
+     tokens read them under different names so they never reference themselves. */
+  --font-sans: var(--font-plex-thai);
+  --font-heading: var(--font-plex-thai);
+  --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

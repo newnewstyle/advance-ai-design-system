@@ -18,7 +18,7 @@ Statements of the source (requirements and stated rationale, as of `7130589`):
 - **Three-place rule.** A new token needs its light value in `:root`, its dark value in `[data-theme="dark"]`, and a `--color-<name>` mapping in `@theme inline`; missing one breaks the utility or one theme. Canonical explanation: [[design-tokens]].
 - **Dark mode is an attribute, not a class**, because CSS Modules rename class selectors. See [[2026-11-14-dark-mode-data-theme-attribute]].
 - **Radius scale is derived** from the single `--radius` with `calc()`; change the base, not each step.
-- **One font family**: IBM Plex Sans Thai (400–700) as `--font-sans`; `--font-heading` maps to the same variable; headings separate from body by weight (600 vs 400). Mono is Geist Mono.
+- **One font family**: IBM Plex Sans Thai (400–700) as `--font-sans`; `--font-heading` maps to the same variable; headings separate from body by weight (600 vs 400). Mono is Geist Mono. *Superseded 2026-11-14:* the guide now names the next/font variable `--font-plex-thai` (mono `--font-geist-mono`) and requires it to differ from the token name; see [[design-tokens]] Known issues 1.
 - **Status colors do not exist yet.** If added, define them as tokens and always pair color with an icon and a text label.
 - **Chart tokens need work**: phase 4 requires distinct `--chart-1..5` hues; the current ones are "all near-grey".
 - **Semantic classes only**: use `bg-primary`, `text-muted-foreground`, etc., never raw palette colors or hex.

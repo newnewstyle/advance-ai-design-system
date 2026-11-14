@@ -36,9 +36,9 @@ Lease, payment and maintenance statuses (vacant / occupied / lease ending / over
 - **All UI copy is Thai** (`<html lang="th">`). Mock data uses Thai names, Thai addresses and phone formats.
 - Money is THB. Format numbers, currency and dates with `Intl` and the `th-TH` locale (e.g. `new Intl.NumberFormat("th-TH", { style: "currency", currency: "THB" })`).
 - Brand name is **บ้านเช่าทุ่งทอง**. Use `site` from `src/lib/site.ts` for the name/tagline, never hard-code it.
-- **One font for everything: IBM Plex Sans Thai** (weights 400–700), loaded with `next/font/google` in `src/app/layout.tsx` as `--font-sans`. `@theme inline` maps `--font-heading` to the same variable, so `font-heading` still works; separate headings from body by weight (headings 600, body 400), not by family. Chosen for readability in a data-heavy back office; IBM Plex Sans Thai Looped is the fallback idea if users find it hard to read.
+- **One font for everything: IBM Plex Sans Thai** (weights 400–700), loaded with `next/font/google` in `src/app/layout.tsx` as `--font-plex-thai`. `@theme inline` maps both `--font-sans` and `--font-heading` to it (the next/font variable must keep a different name from the token, or the token references itself), so `font-heading` still works; separate headings from body by weight (headings 600, body 400), not by family. Chosen for readability in a data-heavy back office; IBM Plex Sans Thai Looped is the fallback idea if users find it hard to read.
 - Tables get `tabular-nums` from the base layer so money columns align; add it to other numeric displays (KPIs, amounts) too.
-- Mono: Geist Mono (`--font-mono`).
+- Mono: Geist Mono (`--font-geist-mono`, mapped to the `--font-mono` token).
 
 ## Commands
 

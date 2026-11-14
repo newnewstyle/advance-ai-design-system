@@ -10,16 +10,19 @@ import { site } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 // One font for the whole app: IBM Plex Sans Thai (static font, so weights
-// must be listed). globals.css maps --font-heading to the same variable.
+// must be listed). It sets --font-plex-thai; globals.css maps the Tailwind
+// --font-sans and --font-heading tokens to it. Keep the names different:
+// a token named after the variable it reads (--font-sans: var(--font-sans))
+// is a self-reference that only works by cascade luck.
 const fontSans = IBM_Plex_Sans_Thai({
   subsets: ["thai", "latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
+  variable: "--font-plex-thai",
 })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-geist-mono",
 })
 
 export const metadata: Metadata = {
