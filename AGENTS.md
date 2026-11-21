@@ -48,9 +48,11 @@ npm run build      # next build
 npm run lint       # eslint (flat config: eslint-config-next core-web-vitals + typescript)
 npm run typecheck  # tsc --noEmit
 npm run format     # prettier --write on all .ts/.tsx (sorts Tailwind classes)
+npm run storybook  # Storybook dev server on http://127.0.0.1:6006 (binds 127.0.0.1, not localhost)
+npm run build-storybook  # static build into storybook-static/ (gitignored, eslint-ignored)
 ```
 
-No test runner is configured. Verify changes with `typecheck`, `lint`, and by viewing the page in the dev server.
+No test runner is configured. Verify changes with `typecheck`, `lint`, and by viewing the page in the dev server (or the component in Storybook).
 
 Adding a shadcn component: `npx shadcn@latest add <name>` drops a lowercase `src/components/ui/<name>.tsx` full of Tailwind classes. Convert it to the folder + CSS Module pattern below, delete the lowercase file, and import from `@/components/ui/<Name>`. The CLI can't see the PascalCase folders, so if a new component depends on an existing one (e.g. `button`) it will re-create that file too; delete the duplicate and point imports at the existing folder. Never use `--overwrite`.
 
@@ -72,12 +74,14 @@ Adding a shadcn component: `npx shadcn@latest add <name>` drops a lowercase `src
 - Pages are server components that export `metadata` and render a client component from `src/components/<area>/` (forms, anything using `useAuth`).
 - Sidebar menu comes from `src/components/app-shell/nav-items.ts`; items whose `phase` > `CURRENT_PHASE` render disabled with "เร็วๆ นี้". Bump `CURRENT_PHASE` when a phase ships (it also drives the roadmap card on `/dashboard`).
 - `src/components/theme-provider.tsx` — wraps next-themes and adds a global **`d` hotkey to toggle dark mode** (ignored while typing in inputs).
-- `/` (`src/app/page.tsx` → `src/components/showcase/component-gallery.tsx`) — public gallery of every design-system component, grouped by section. When you add or change a `ui/` component, add or update its demo here. `/playground` is the older template demo and is superseded.
+- `/` (`src/app/page.tsx` → `src/components/showcase/component-gallery.tsx`) — public gallery of every design-system component, grouped by section. When you add or change a `ui/` component, add or update its demo here **and** its Storybook story. `/playground` is the older template demo and is superseded.
+- **Storybook** (`@storybook/nextjs-vite` 10, Vite builder): config in `.storybook/`. `preview.tsx` imports `globals.css`, loads the same `next/font` fonts and puts their variables on `<html>` (so portalled dialogs/menus get the font), wraps stories in `TooltipProvider` + `Toaster`, and adds a light/dark toolbar switch that sets `data-theme` on `<html>`, the same mechanism as the app. Telemetry is disabled in `main.ts`.
 - `src/hooks/use-mobile.ts` — used by the `Sidebar` component for responsive behavior.
 
 ### Design system rules
 
-- **`src/components/ui/` is owned source**, one PascalCase folder per component: `Button/Button.tsx` (markup + props), `Button/Button.module.css` (all styling), `Button/index.ts` (re-export). Import as `@/components/ui/Button`. Restyle by editing the `.module.css`.
+- **Read the component's doc first.** Before using `Button` in any page or feature component, or changing anything in `src/components/ui/Button/`, read `src/components/ui/Button/Button.md`: it is the source of truth for which `variant`/`size` fits which action, icon and link usage, `aria-label` on icon buttons, tokens and states. The same rule covers every other component that has a `<Name>/<Name>.md`.
+- **`src/components/ui/` is owned source**, one PascalCase folder per component: `Button/Button.tsx` (markup + props), `Button/Button.module.css` (all styling), `Button/index.ts` (re-export), `Button/Button.stories.tsx` (Storybook: `title: "Components/<Name>"`, `tags: ["autodocs"]`, a `Playground` story whose `argTypes` expose the semantic props, plus one story per variant/state, Thai example content), and optionally `Button/Button.md`, a Thai **usage doc** in six parts: (1) purpose, (2) when to use, (3) when not to use, (4) props and variants, (5) tokens used, (6) example. Parts 1–3 are an AI draft grounded in real usage in the code; parts 4–5 come from the code and part 6 from the stories. Write every gap or undecided choice as a `TODO:` line in part 3 for the team to decide, rather than guessing. `Button.md` is the template. Import as `@/components/ui/Button`. Restyle by editing the `.module.css`.
 - **Tokens in `src/app/globals.css` are the source of truth** (oklch CSS variables: colors, `--radius`, sidebar, chart). Change the look via tokens first, component CSS second.
 - **Adding a token touches three places:** the light value in `:root`, the dark value in `[data-theme="dark"]`, and the Tailwind mapping in `@theme inline` (`--color-<name>: var(--<name>)`). Miss one and the utility class either doesn't exist or breaks in one theme.
 - **Radius scale** (`--radius-sm` … `--radius-4xl`) is derived from the single `--radius` with `calc()` in `@theme inline`. Change the base, not each step.
