@@ -5,7 +5,7 @@ import { cn } from "cn"
 import styles from "./Badge.module.css"
 
 type BadgeVariant =
-  "default" | "secondary" | "destructive" | "outline" | "ghost" | "link"
+  "default" | "secondary" | "outline" | "success" | "warning" | "destructive"
 
 type BadgeProps = useRender.ComponentProps<"span"> & {
   variant?: BadgeVariant

@@ -40,7 +40,7 @@ export const Default: Story = {
         <CardTitle>บ้านเลขที่ 12/3</CardTitle>
         <CardDescription>ซอยทุ่งทอง 1</CardDescription>
         <CardAction>
-          <Badge variant="secondary">
+          <Badge variant="success">
             <CircleCheckIcon aria-hidden />
             มีผู้เช่า
           </Badge>

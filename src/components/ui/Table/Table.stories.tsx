@@ -27,8 +27,8 @@ const payments = [
 ] as const
 
 const status = {
-  paid: { label: "ชำระแล้ว", icon: CircleCheckIcon, variant: "secondary" },
-  due: { label: "ใกล้ครบกำหนด", icon: ClockIcon, variant: "outline" },
+  paid: { label: "ชำระแล้ว", icon: CircleCheckIcon, variant: "success" },
+  due: { label: "ใกล้ครบกำหนด", icon: ClockIcon, variant: "warning" },
   overdue: { label: "ค้างชำระ", icon: CircleAlertIcon, variant: "destructive" },
 } as const
 

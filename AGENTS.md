@@ -87,7 +87,7 @@ Adding a shadcn component: `npx shadcn@latest add <name>` drops a lowercase `src
 - **Radius scale** (`--radius-sm` … `--radius-4xl`) is derived from the single `--radius` with `calc()` in `@theme inline`. Change the base, not each step.
 - **Dark mode is the `data-theme="dark"` attribute on `<html>`, not a `.dark` class** (`@custom-variant dark` in `globals.css`, `attribute="data-theme"` in `theme-provider.tsx`). CSS Modules rename every class selector, so a `.dark` class would become `.xYz_dark` inside `@apply dark:…` and silently stop matching. Don't switch it back.
 - Use semantic token classes (`bg-primary`, `text-muted-foreground`, `border-border`, `ring-ring/50`) rather than raw Tailwind palette colors or hex values, so both themes work.
-- Status colors (success / warning / critical, e.g. for lease, payment and repair badges) don't exist yet. If added, define them as tokens per the rule above, and never convey status by color alone: pair it with an icon and a text label.
+- Status colors are the tokens `--success`, `--warning` and `--destructive`. Which status gets which color is set in `src/components/ui/Badge/Badge.md`. Never convey status by color alone: pair it with an icon and a text label.
 - `components.json` base color is `stone`; menus use `default-translucent` / `subtle` accent.
 
 ### Component conventions (when adding or customizing `src/components/ui/`)

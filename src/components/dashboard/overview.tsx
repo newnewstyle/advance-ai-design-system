@@ -80,7 +80,7 @@ export function Overview() {
                       {phase.detail}
                     </p>
                   </div>
-                  <Badge variant={done ? "default" : "outline"}>
+                  <Badge variant={done ? "success" : "outline"}>
                     {done ? "เสร็จแล้ว" : "ยังไม่เริ่ม"}
                   </Badge>
                 </li>

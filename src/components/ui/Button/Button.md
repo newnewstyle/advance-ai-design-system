@@ -112,7 +112,7 @@ Element ที่ render ออกมามี `data-slot="button"`, `data-varia
 | `--background`             | `oklch(1 0 0)`              | `oklch(0.147 0.004 49.25)`   | พื้น `outline`                                    |
 | `--border`                 | `oklch(0.923 0.003 48.717)` | `oklch(1 0 0 / 10%)`         | เส้นขอบ `outline` (light)                         |
 | `--input`                  | `oklch(0.923 0.003 48.717)` | `oklch(1 0 0 / 15%)`         | เส้นขอบและพื้น `outline` (dark)                   |
-| `--destructive`            | `oklch(0.577 0.245 27.325)` | `oklch(0.704 0.191 22.216)`  | `destructive`, `destructive-solid`, สถานะ invalid |
+| `--destructive`            | `oklch(0.53 0.22 27)`       | `oklch(0.74 0.17 22)`        | `destructive`, `destructive-solid`, สถานะ invalid |
 | `--destructive-foreground` | `oklch(0.985 0 0)`          | `oklch(0.205 0 0)`           | ตัวอักษร `destructive-solid`                      |
 | `--ring`                   | `oklch(0.709 0.01 56.259)`  | `oklch(0.553 0.013 58.071)`  | วง focus                                          |
 | `--radius`                 | `0.625rem` (10px)           | –                            | `--radius-lg` = 10px, `--radius-md` = 8px         |

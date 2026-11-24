@@ -167,9 +167,9 @@ const badgeVariants: BadgeVariant[] = [
   "default",
   "secondary",
   "outline",
-  "ghost",
+  "success",
+  "warning",
   "destructive",
-  "link",
 ]
 const sheetSides: SheetSide[] = ["top", "right", "bottom", "left"]
 
@@ -214,8 +214,8 @@ const products = [
 ]
 
 const statusInfo = {
-  paid: { label: "ชำระแล้ว", icon: CircleCheckIcon, variant: "secondary" },
-  due: { label: "ใกล้ครบกำหนด", icon: ClockIcon, variant: "outline" },
+  paid: { label: "ชำระแล้ว", icon: CircleCheckIcon, variant: "success" },
+  due: { label: "ใกล้ครบกำหนด", icon: ClockIcon, variant: "warning" },
   overdue: {
     label: "ค้างชำระ",
     icon: CircleAlertIcon,
@@ -596,7 +596,7 @@ export function ComponentGallery() {
                 <CardTitle>บ้านเลขที่ 12/3</CardTitle>
                 <CardDescription>ซอยทุ่งทอง 1</CardDescription>
                 <CardAction>
-                  <Badge variant="secondary">
+                  <Badge variant="success">
                     <CircleCheckIcon aria-hidden />
                     มีผู้เช่า
                   </Badge>
