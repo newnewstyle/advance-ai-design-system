@@ -5,10 +5,10 @@ import { Button, type ButtonSize, type ButtonVariant } from "./Button"
 
 const variants: ButtonVariant[] = [
   "default",
-  "secondary",
   "outline",
   "ghost",
   "destructive",
+  "destructive-solid",
   "link",
 ]
 const sizes: ButtonSize[] = ["xs", "sm", "default", "lg"]
@@ -87,6 +87,31 @@ export const WithIcon: Story = {
       </Button>
     </div>
   ),
+}
+
+/** loading shows a spinner, disables the button and sets aria-busy. */
+export const Loading: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      <Button {...args} loading>
+        กำลังบันทึก
+      </Button>
+      <Button
+        {...args}
+        variant="outline"
+        size="icon"
+        loading
+        aria-label="แก้ไข"
+      >
+        <PencilIcon />
+      </Button>
+    </div>
+  ),
+}
+
+/** Solid red is only for the final confirm of an irreversible delete. */
+export const DestructiveSolid: Story = {
+  args: { variant: "destructive-solid", children: "ลบถาวร" },
 }
 
 export const Disabled: Story = {

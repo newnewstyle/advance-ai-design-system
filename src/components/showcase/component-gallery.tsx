@@ -6,9 +6,13 @@ import { useTheme } from "next-themes"
 import {
   BellRingIcon,
   ChartColumnIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   CircleAlertIcon,
   CircleCheckIcon,
   ClockIcon,
+  DownloadIcon,
   HouseIcon,
   LogOutIcon,
   MoreHorizontalIcon,
@@ -48,6 +52,11 @@ import {
   type ButtonSize,
   type ButtonVariant,
 } from "@/components/ui/Button"
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "@/components/ui/ButtonGroup"
 import {
   Card,
   CardAction,
@@ -147,10 +156,10 @@ import { site } from "@/lib/site"
 
 const buttonVariants: ButtonVariant[] = [
   "default",
-  "secondary",
   "outline",
   "ghost",
   "destructive",
+  "destructive-solid",
   "link",
 ]
 const buttonSizes: ButtonSize[] = ["xs", "sm", "default", "lg"]
@@ -350,16 +359,56 @@ export function ComponentGallery() {
 
           <Demo
             name="Button — states"
-            description="มีไอคอน, ปิดใช้งาน, ปรับด้วย className"
+            description="มีไอคอน, กำลังโหลด, ปิดใช้งาน, ปรับด้วย className"
           >
             <Button>
               <PlusIcon data-icon="inline-start" />
               เพิ่มบ้าน
             </Button>
+            <Button loading>กำลังบันทึก</Button>
+            <Button
+              size="icon"
+              variant="outline"
+              loading
+              aria-label="กำลังโหลด"
+            />
             <Button disabled>ปิดใช้งาน</Button>
             <Button variant="outline" className="rounded-full">
               rounded-full
             </Button>
+          </Demo>
+
+          <Demo
+            name="ButtonGroup"
+            description="รวมปุ่มที่เกี่ยวข้องเป็นแถบเดียว: ช่วงเวลา, เลื่อนหน้า, ปุ่มแยก"
+            wide
+          >
+            <ButtonGroup>
+              <Button variant="outline">วันนี้</Button>
+              <Button variant="outline">สัปดาห์นี้</Button>
+              <Button variant="outline">เดือนนี้</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button variant="outline" size="icon" aria-label="หน้าก่อนหน้า">
+                <ChevronLeftIcon />
+              </Button>
+              <ButtonGroupText className="tabular-nums">
+                หน้า 2 / 5
+              </ButtonGroupText>
+              <Button variant="outline" size="icon" aria-label="หน้าถัดไป">
+                <ChevronRightIcon />
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button>
+                <DownloadIcon data-icon="inline-start" />
+                ส่งออก
+              </Button>
+              <ButtonGroupSeparator />
+              <Button size="icon" aria-label="ตัวเลือกการส่งออก">
+                <ChevronDownIcon />
+              </Button>
+            </ButtonGroup>
           </Demo>
 
           <Demo name="Badge" description="ป้ายกำกับสั้นๆ">
@@ -706,7 +755,7 @@ export function ComponentGallery() {
                 <AlertDialogFooter>
                   <AlertDialogCancel>ยกเลิก</AlertDialogCancel>
                   <AlertDialogAction
-                    variant="destructive"
+                    variant="destructive-solid"
                     onClick={() => toast("ลบแล้ว (ตัวอย่าง)")}
                   >
                     ลบ

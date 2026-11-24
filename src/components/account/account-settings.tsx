@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { LoaderCircleIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { initials } from "@/lib/user"
@@ -168,8 +167,7 @@ function ProfileForm({ user }: { user: PublicUser }) {
           >
             ยกเลิก
           </Button>
-          <Button type="submit" disabled={!dirty || pending}>
-            {pending ? <LoaderCircleIcon className="animate-spin" /> : null}
+          <Button type="submit" disabled={!dirty} loading={pending}>
             บันทึก
           </Button>
         </CardFooter>
@@ -252,8 +250,7 @@ function PasswordForm() {
           />
         </CardContent>
         <CardFooter className="justify-end">
-          <Button type="submit" disabled={pending}>
-            {pending ? <LoaderCircleIcon className="animate-spin" /> : null}
+          <Button type="submit" loading={pending}>
             เปลี่ยนรหัสผ่าน
           </Button>
         </CardFooter>

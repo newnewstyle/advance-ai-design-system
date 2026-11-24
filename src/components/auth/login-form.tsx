@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { LoaderCircleIcon } from "lucide-react"
 
 import { useAuth } from "@/components/auth/auth-provider"
 import { FormField, PasswordField } from "@/components/auth/form-field"
@@ -92,8 +91,7 @@ export function LoginForm() {
             onChange={set("password")}
             error={errors.password}
           />
-          <Button type="submit" size="lg" className="w-full" disabled={pending}>
-            {pending ? <LoaderCircleIcon className="animate-spin" /> : null}
+          <Button type="submit" size="lg" className="w-full" loading={pending}>
             เข้าสู่ระบบ
           </Button>
         </CardContent>
@@ -116,7 +114,6 @@ export function LoginForm() {
           <Button
             type="button"
             variant="link"
-            className="h-auto px-0"
             onClick={() => {
               setValues({ email: demo.email, password: demo.password })
               setErrors({})

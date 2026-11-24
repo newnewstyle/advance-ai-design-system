@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { LoaderCircleIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { useAuth } from "@/components/auth/auth-provider"
@@ -182,8 +181,7 @@ export function RegisterForm() {
               </p>
             ) : null}
           </div>
-          <Button type="submit" size="lg" className="w-full" disabled={pending}>
-            {pending ? <LoaderCircleIcon className="animate-spin" /> : null}
+          <Button type="submit" size="lg" className="w-full" loading={pending}>
             สมัครสมาชิก
           </Button>
         </CardContent>

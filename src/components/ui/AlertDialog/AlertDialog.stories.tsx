@@ -46,7 +46,7 @@ const meta = {
         <AlertDialogFooter>
           <AlertDialogCancel>ยกเลิก</AlertDialogCancel>
           <AlertDialogAction
-            variant="destructive"
+            variant="destructive-solid"
             onClick={() => toast("ลบแล้ว (ตัวอย่าง)")}
           >
             ลบ
