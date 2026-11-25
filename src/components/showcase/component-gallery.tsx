@@ -152,6 +152,21 @@ import {
 } from "@/components/ui/Tooltip"
 import { site } from "@/lib/site"
 
+import {
+  AlertDemo,
+  BreadcrumbDemo,
+  ComboboxDemo,
+  DatePickerDemo,
+  DrawerDemo,
+  EmptyDemo,
+  FieldDemo,
+  InputGroupDemo,
+  PaginationDemo,
+  PopoverDemo,
+  RadioGroupDemo,
+  SpinnerDemo,
+} from "./gallery-phase2"
+
 /* ------------------------------ data ------------------------------ */
 
 const buttonVariants: ButtonVariant[] = [
@@ -526,6 +541,33 @@ export function ComponentGallery() {
               </label>
             </div>
           </Demo>
+          <Demo
+            name="Field"
+            description="ป้าย + ช่องกรอก + คำอธิบาย / ข้อความผิด"
+          >
+            <FieldDemo />
+          </Demo>
+          <Demo
+            name="InputGroup"
+            description="ช่องกรอกที่มีหน่วยหรือไอคอนติดอยู่"
+          >
+            <InputGroupDemo />
+          </Demo>
+          <Demo
+            name="RadioGroup"
+            description="เลือก 1 จากตัวเลือกที่เห็นทั้งหมด"
+          >
+            <RadioGroupDemo />
+          </Demo>
+          <Demo name="Combobox" description="พิมพ์ค้นหาแล้วเลือกจากรายการยาว">
+            <ComboboxDemo />
+          </Demo>
+          <Demo
+            name="Calendar + Popover (date picker)"
+            description="เลือกวันที่ เดือนภาษาไทย ปี พ.ศ."
+          >
+            <DatePickerDemo />
+          </Demo>
         </Section>
 
         {/* ============================ data ============================ */}
@@ -699,6 +741,22 @@ export function ComponentGallery() {
               </div>
             </div>
           </Demo>
+
+          <Demo name="Alert" description="แจ้งเตือนที่อยู่บนหน้า จนกว่าจะแก้">
+            <AlertDemo />
+          </Demo>
+          <Demo name="Empty" description="หน้าว่าง บอกว่าทำอะไรต่อได้">
+            <EmptyDemo />
+          </Demo>
+          <Demo name="Spinner" description="กำลังโหลด">
+            <SpinnerDemo />
+          </Demo>
+          <Demo name="Breadcrumb" description="เส้นทางในหน้ารายละเอียด">
+            <BreadcrumbDemo />
+          </Demo>
+          <Demo name="Pagination" description="แบ่งหน้าใต้ตารางยาว" wide>
+            <PaginationDemo />
+          </Demo>
         </Section>
 
         {/* ============================ overlays ============================ */}
@@ -827,6 +885,17 @@ export function ComponentGallery() {
                 <TooltipContent side={side}>แสดงด้าน {side}</TooltipContent>
               </Tooltip>
             ))}
+          </Demo>
+
+          <Demo name="Popover" description="กล่องข้อมูลเล็กๆ ที่เปิดจากปุ่ม">
+            <PopoverDemo />
+          </Demo>
+
+          <Demo
+            name="Drawer"
+            description="แผ่นเลื่อนจากล่าง ปัดลงเพื่อปิด (เหมาะกับมือถือ)"
+          >
+            <DrawerDemo />
           </Demo>
 
           <Demo name="Sonner (toast)" description="ข้อความแจ้งผลชั่วคราว">
