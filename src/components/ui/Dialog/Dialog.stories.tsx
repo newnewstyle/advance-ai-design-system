@@ -17,6 +17,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./Dialog"
+import { usageDoc } from "@/lib/usage-doc"
+
+import usage from "./Dialog.md?raw"
 
 type Args = {
   showCloseButton: boolean
@@ -143,6 +146,7 @@ function AddTenantDialog({
 const meta = {
   title: "Components/Dialog",
   tags: ["autodocs"],
+  parameters: { docs: { description: { component: usageDoc(usage) } } },
   args: {
     showCloseButton: true,
     footerCloseButton: false,

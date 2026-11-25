@@ -11,7 +11,7 @@ Component: $ARGUMENTS
 
 A usage doc is the **context layer** for one component: the file designers and AI agents read before they use it. Write it for that reader, in Thai, beside the component: `src/components/ui/<Name>/<Name>.md`. `src/components/ui/Badge/Badge.md` is the reference; match its shape and tone.
 
-Change docs only. Component code (`.tsx`, `.module.css`, stories) stays untouched.
+Change docs only. Component code (`.tsx`, `.module.css`) stays untouched; in the stories file, only the Docs wiring from step 3.
 
 ## 1. Read
 
@@ -41,5 +41,6 @@ Done when all six parts exist and every claim traces to code you read in step 1.
 - Every prop, value and token in the doc exists in the code; nothing that exists is missing from part 4.
 - No implementation detail from the leave-out list remains.
 - Run `npx prettier --write` on the doc.
+- The doc shows on the component's Storybook Docs page: `<Name>.stories.tsx` imports it with `import usage from "./<Name>.md?raw"` and sets `parameters: { docs: { description: { component: usageDoc(usage) } } }` on `meta` (`usageDoc` from `@/lib/usage-doc`). This wiring is the one allowed edit to a stories file.
 
-Done when all three hold. Report the TODOs you wrote, so the user can decide them (the `grilling` skill fits).
+Done when all four hold. Report the TODOs you wrote, so the user can decide them (the `grilling` skill fits).

@@ -8,6 +8,9 @@ import {
 } from "lucide-react"
 
 import { Badge, type BadgeVariant } from "./Badge"
+import { usageDoc } from "@/lib/usage-doc"
+
+import usage from "./Badge.md?raw"
 
 const variants: BadgeVariant[] = [
   "default",
@@ -22,6 +25,7 @@ const meta = {
   title: "Components/Badge",
   component: Badge,
   tags: ["autodocs"],
+  parameters: { docs: { description: { component: usageDoc(usage) } } },
   args: { children: "ใหม่", variant: "default" },
   argTypes: { variant: { control: "select", options: variants } },
 } satisfies Meta<typeof Badge>

@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { PencilIcon, PlusIcon, Trash2Icon } from "lucide-react"
 
 import { Button, type ButtonSize, type ButtonVariant } from "./Button"
+import { usageDoc } from "@/lib/usage-doc"
+
+import usage from "./Button.md?raw"
 
 const variants: ButtonVariant[] = [
   "default",
@@ -18,6 +21,7 @@ const meta = {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
+  parameters: { docs: { description: { component: usageDoc(usage) } } },
   args: {
     children: "บันทึก",
     variant: "default",
