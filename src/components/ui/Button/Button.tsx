@@ -3,19 +3,7 @@ import { cn } from "cn"
 import { LoaderCircleIcon } from "lucide-react"
 
 import styles from "./Button.module.css"
-
-type ButtonVariant =
-  "default" | "outline" | "ghost" | "destructive" | "destructive-solid" | "link"
-
-type ButtonSize =
-  "default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg"
-
-type ButtonProps = ButtonPrimitive.Props & {
-  variant?: ButtonVariant
-  size?: ButtonSize
-  /** Shows a spinner, disables the button and sets aria-busy. */
-  loading?: boolean
-}
+import type { ButtonProps, ButtonSize, ButtonVariant } from "./Button.types"
 
 function Button({
   className,

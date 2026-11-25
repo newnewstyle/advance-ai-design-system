@@ -55,27 +55,27 @@ export const Status: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
       <Badge variant="success">
-        <CircleCheckIcon aria-hidden />
+        <CircleCheckIcon data-icon="inline-start" aria-hidden />
         ชำระแล้ว
       </Badge>
       <Badge variant="success">
-        <CircleCheckIcon aria-hidden />
+        <CircleCheckIcon data-icon="inline-start" aria-hidden />
         มีผู้เช่า
       </Badge>
       <Badge variant="outline">
-        <CircleDashedIcon aria-hidden />
+        <CircleDashedIcon data-icon="inline-start" aria-hidden />
         ว่าง
       </Badge>
       <Badge variant="warning">
-        <ClockIcon aria-hidden />
+        <ClockIcon data-icon="inline-start" aria-hidden />
         ใกล้ครบกำหนด
       </Badge>
       <Badge variant="warning">
-        <CalendarClockIcon aria-hidden />
+        <CalendarClockIcon data-icon="inline-start" aria-hidden />
         สัญญาใกล้หมด
       </Badge>
       <Badge variant="destructive">
-        <CircleAlertIcon aria-hidden />
+        <CircleAlertIcon data-icon="inline-start" aria-hidden />
         ค้างชำระ
       </Badge>
     </div>

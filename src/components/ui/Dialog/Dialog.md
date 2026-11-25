@@ -4,6 +4,48 @@
 
 ---
 
+## Import and usage (วิธี import และใช้งาน)
+
+1. Import ชิ้นส่วนที่ใช้จากโฟลเดอร์ของ component (ทุกชิ้นมาจากที่เดียวกัน)
+
+   ```tsx
+   import {
+     Dialog,
+     DialogClose,
+     DialogContent,
+     DialogDescription,
+     DialogFooter,
+     DialogHeader,
+     DialogTitle,
+     DialogTrigger,
+   } from "@/components/ui/Dialog"
+   ```
+
+2. ประกอบตามลำดับนี้เสมอ: ตัวเปิด → กล่อง → หัว (ชื่อ + คำอธิบาย) → เนื้อหา**ในกล่องเดียว** → ส่วนท้าย (ยกเลิกซ้าย, ปุ่มหลักขวา)
+
+   ```tsx
+   <Dialog disablePointerDismissal>
+     <DialogTrigger render={<Button variant="outline" />}>
+       เพิ่มผู้เช่า
+     </DialogTrigger>
+     <DialogContent>
+       <DialogHeader>
+         <DialogTitle>เพิ่มผู้เช่า</DialogTitle>
+         <DialogDescription>กรอกข้อมูลผู้เช่าใหม่</DialogDescription>
+       </DialogHeader>
+       <div>{/* ช่องกรอกทั้งหมดอยู่ในกล่องนี้ */}</div>
+       <DialogFooter>
+         <DialogClose render={<Button variant="outline" />}>ยกเลิก</DialogClose>
+         <Button type="submit">บันทึก</Button>
+       </DialogFooter>
+     </DialogContent>
+   </Dialog>
+   ```
+
+3. Dialog ที่มีฟอร์มใส่ `disablePointerDismissal` เสมอ และปิดเองหลังบันทึกสำเร็จ (ดูตัวอย่างเต็มใน story `Default`)
+
+---
+
 ## 1. Purpose
 
 หน้าต่างลอยกลางจอที่บังหน้าหลักไว้ ให้ผู้ใช้ทำงานสั้นๆ หนึ่งอย่างให้เสร็จก่อนกลับไปทำต่อ
@@ -87,31 +129,32 @@ contrast ตัวอักษร (สว่าง / มืด): หัวเร
 
 ## 6. Example
 
-จาก story `Default`:
+จาก story `LongContent` (ค่า Controls เริ่มต้น: ปุ่ม X เปิด, คลิกพื้นหลังไม่ปิด) ส่วนฟอร์มเพิ่มผู้เช่าที่ตรวจข้อมูลได้จริงดูใน story `Default`
 
 ```tsx
 <Dialog disablePointerDismissal>
   <DialogTrigger render={<Button variant="outline" />}>
-    <PlusIcon data-icon="inline-start" />
-    เพิ่มผู้เช่า
+    ดูเงื่อนไขการเช่า
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
-      <DialogTitle>เพิ่มผู้เช่า</DialogTitle>
-      <DialogDescription>
-        กรอกข้อมูลผู้เช่าใหม่ (ตัวอย่าง ไม่บันทึกจริง)
-      </DialogDescription>
+      <DialogTitle>เงื่อนไขการเช่า</DialogTitle>
+      <DialogDescription>อ่านให้ครบก่อนยืนยัน</DialogDescription>
     </DialogHeader>
-    <div className="flex flex-col gap-2">
-      <Label htmlFor="name">ชื่อ-นามสกุล</Label>
-      <Input id="name" />
+    <div className="flex flex-col gap-3">
+      {Array.from({ length: 30 }, (_, i) => (
+        <p key={i}>
+          ข้อ {i + 1}. ผู้เช่าต้องชำระค่าเช่าภายในวันที่ 5 ของทุกเดือน
+        </p>
+      ))}
     </div>
     <DialogFooter>
+      <DialogClose render={<Button variant="outline" />}>ยกเลิก</DialogClose>
       <DialogClose
         render={<Button />}
-        onClick={() => toast.success("เพิ่มผู้เช่าแล้ว")}
+        onClick={() => toast.success("ยอมรับเงื่อนไขแล้ว")}
       >
-        บันทึก
+        ยอมรับ
       </DialogClose>
     </DialogFooter>
   </DialogContent>

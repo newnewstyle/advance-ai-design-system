@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { PencilIcon, PlusIcon, Trash2Icon } from "lucide-react"
 
-import { Button, type ButtonSize, type ButtonVariant } from "./Button"
 import { usageDoc } from "@/lib/usage-doc"
 
+import { Button, type ButtonSize, type ButtonVariant } from "./Button"
 import usage from "./Button.md?raw"
+import { buttonSpec } from "./Button.spec"
 
 const variants: ButtonVariant[] = [
   "default",
@@ -21,7 +22,9 @@ const meta = {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
-  parameters: { docs: { description: { component: usageDoc(usage) } } },
+  parameters: {
+    docs: { description: { component: usageDoc(usage, buttonSpec) } },
+  },
   args: {
     children: "บันทึก",
     variant: "default",
@@ -125,4 +128,13 @@ export const Disabled: Story = {
 /** Utilities passed via className override the module styles. */
 export const ClassNameOverride: Story = {
   args: { className: "w-64 rounded-full", children: "ส่งข้อความเตือน" },
+}
+
+/** Navigation that looks like a button. Renders an <a>, but Base UI still sets role="button" (see the TODO in Button.spec.ts). */
+export const AsLink: Story = {
+  args: {
+    nativeButton: false,
+    render: <a href="#dashboard" />,
+    children: "ไปหน้าภาพรวม",
+  },
 }

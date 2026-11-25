@@ -4,6 +4,32 @@
 
 ---
 
+## Import and usage (วิธี import และใช้งาน)
+
+1. Import จากโฟลเดอร์ของ component และไอคอนจาก `lucide-react`
+
+   ```tsx
+   import { Badge } from "@/components/ui/Badge"
+   import { CircleCheckIcon } from "lucide-react"
+   ```
+
+2. เลือกระดับสถานะจากตารางใน "When to use" แล้วใส่**ไอคอน + ข้อความ**เสมอ ไอคอนใส่ `aria-hidden`
+
+   ```tsx
+   <Badge variant="success">
+     <CircleCheckIcon data-icon="inline-start" aria-hidden />
+     ชำระแล้ว
+   </Badge>
+   ```
+
+3. ป้ายหมวดหมู่ (ไม่ใช่สถานะ) ใช้ `secondary` ไม่ต้องมีไอคอน
+
+   ```tsx
+   <Badge variant="secondary">ทาวน์เฮาส์</Badge>
+   ```
+
+---
+
 ## 1. Purpose
 
 ป้ายเล็กที่บอกสถานะหรือหมวดหมู่ของข้อมูล ให้อ่านแล้วรู้ทันทีโดยไม่ต้องกด
@@ -91,19 +117,19 @@
 
 ```tsx
 <Badge variant="success">
-  <CircleCheckIcon aria-hidden />
+  <CircleCheckIcon data-icon="inline-start" aria-hidden />
   ชำระแล้ว
 </Badge>
 <Badge variant="outline">
-  <CircleDashedIcon aria-hidden />
+  <CircleDashedIcon data-icon="inline-start" aria-hidden />
   ว่าง
 </Badge>
 <Badge variant="warning">
-  <ClockIcon aria-hidden />
+  <ClockIcon data-icon="inline-start" aria-hidden />
   ใกล้ครบกำหนด
 </Badge>
 <Badge variant="destructive">
-  <CircleAlertIcon aria-hidden />
+  <CircleAlertIcon data-icon="inline-start" aria-hidden />
   ค้างชำระ
 </Badge>
 ```
