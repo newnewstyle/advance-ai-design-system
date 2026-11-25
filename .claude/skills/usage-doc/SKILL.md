@@ -14,7 +14,7 @@ The usage docs are the **context layer** for one component: what designers and A
 - `<Name>.spec.ts`: the rules. Purpose, when to use, when not to use, deliberate decisions with their reason, open TODOs. Typed as `ComponentSpec` (`src/lib/component-spec.ts`).
 - `<Name>.md`: the manual. Props and variants, tokens used, one example. A pointer line at the top says the rules live in the spec.
 
-`src/components/ui/Button/` is the reference for both files and for the stories wiring; match its shape and tone.
+`src/components/ui/Button/` is the reference for both files and for the stories wiring; `src/components/ui/Tabs/` shows the same for a component made of several parts. Match their shape and tone.
 
 Component code (`.tsx`, `.module.css`) stays untouched. If the props types still live in `<Name>.tsx`, move them to `<Name>.types.ts` and re-export them from the `.tsx` (as Button does); callers' imports must not change.
 

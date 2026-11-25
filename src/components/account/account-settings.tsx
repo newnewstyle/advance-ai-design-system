@@ -57,11 +57,12 @@ export function AccountSettings() {
           <TabsTrigger value="profile">ข้อมูลส่วนตัว</TabsTrigger>
           <TabsTrigger value="password">รหัสผ่าน</TabsTrigger>
         </TabsList>
-        <TabsContent value="profile">
+        {/* keepMounted: typed but unsaved input survives switching tabs */}
+        <TabsContent value="profile" keepMounted>
           {/* key resets the form when the saved user changes */}
           <ProfileForm key={JSON.stringify(user)} user={user} />
         </TabsContent>
-        <TabsContent value="password">
+        <TabsContent value="password" keepMounted>
           <PasswordForm />
         </TabsContent>
       </Tabs>
