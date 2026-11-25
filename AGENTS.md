@@ -26,7 +26,7 @@ There is no backend. Auth and data are faked on the client (see below). Favor re
 1. **Foundation** — switch to Thai-capable fonts, Login / Register / Account details, mock session + route guard, app shell with `Sidebar`.
 2. **Core data** — houses, tenants, leases, rent payments (list tables, detail pages, add/edit forms).
 3. **Rent reminders** — pick overdue tenants, choose a template (upcoming / due / overdue) auto-filled with name, amount and due date, pick a channel (LINE / SMS / email, display only), "send", and log it to reminder history.
-4. **Collection stats** — KPIs (total overdue, reminders sent, avg days from reminder to payment) and charts (collected vs overdue per month, on-time rate per tenant). Needs `npx shadcn@latest add chart` (Recharts) and distinct `--chart-1..5` hues; the current chart tokens are all near-grey.
+4. **Collection stats** — KPIs (total overdue, reminders sent, avg days from reminder to payment) and charts (collected vs overdue per month, on-time rate per tenant). Build with `Chart` (Recharts), `StatCard` and `Money`.
 5. **Maintenance requests** — status flow pending → in progress → done, form with house, category (plumbing, electrical, A/C…), urgency, description and photo preview (not uploaded), plus repair cost feeding the income/expense summary.
 
 Lease, payment and maintenance statuses (vacant / occupied / lease ending / overdue, etc.) use the status-color rule below: token color + icon + text label.
@@ -95,7 +95,9 @@ Adding a shadcn component: `npx shadcn@latest add <name>` drops a lowercase `src
 - **Radius scale** (`--radius-sm` … `--radius-4xl`) is derived from the single `--radius` with `calc()` in `@theme inline`. Change the base, not each step.
 - **Dark mode is the `data-theme="dark"` attribute on `<html>`, not a `.dark` class** (`@custom-variant dark` in `globals.css`, `attribute="data-theme"` in `theme-provider.tsx`). CSS Modules rename every class selector, so a `.dark` class would become `.xYz_dark` inside `@apply dark:…` and silently stop matching. Don't switch it back.
 - Use semantic token classes (`bg-primary`, `text-muted-foreground`, `border-border`, `ring-ring/50`) rather than raw Tailwind palette colors or hex values, so both themes work.
-- Status colors are the tokens `--success`, `--warning` and `--destructive`. Which status gets which color is set in `src/components/ui/Badge/Badge.md`. Never convey status by color alone: pair it with an icon and a text label.
+- Status colors are the tokens `--success`, `--warning` and `--destructive`. The levels are set in `Badge.spec.ts`; every app status (house, lease, payment, repair) is mapped to a level, icon and Thai label once, in `StatusBadge` (`STATUS`). Show a status with `<StatusBadge status="overdue" />`, not a hand-built Badge. Never convey status by color alone: pair it with an icon and a text label.
+- Money is shown with `<Money value={8500} />` (or `formatMoney` for plain strings), never a hand-written `Intl.NumberFormat`.
+- Chart series use `--chart-1..5` in that fixed order (blue, orange, aqua, yellow, magenta), validated for colour-blind separation in both themes. Charts with 3+ series need direct labels or a table view, because slots 3–5 are below 3:1 on the light surface.
 - `components.json` base color is `stone`; menus use `default-translucent` / `subtle` accent.
 
 ### Component conventions (when adding or customizing `src/components/ui/`)

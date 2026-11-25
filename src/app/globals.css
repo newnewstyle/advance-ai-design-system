@@ -30,11 +30,17 @@
   --border: oklch(0.923 0.003 48.717);
   --input: oklch(0.923 0.003 48.717);
   --ring: oklch(0.709 0.01 56.259);
-  --chart-1: oklch(0.869 0.005 56.366);
-  --chart-2: oklch(0.553 0.013 58.071);
-  --chart-3: oklch(0.444 0.011 73.639);
-  --chart-4: oklch(0.374 0.01 67.558);
-  --chart-5: oklch(0.268 0.007 34.298);
+  /*
+   * Chart series, in this fixed order (never cycled): blue, orange, aqua,
+   * yellow, magenta. Validated as a set for colour-blind separation on the
+   * card surface. 3–5 are below 3:1 here, so charts with 3+ series need
+   * direct labels or a table view.
+   */
+  --chart-1: #2a78d6;
+  --chart-2: #eb6834;
+  --chart-3: #1baf7a;
+  --chart-4: #eda100;
+  --chart-5: #e87ba4;
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0.001 106.423);
   --sidebar-foreground: oklch(0.147 0.004 49.25);
@@ -70,11 +76,12 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.553 0.013 58.071);
-  --chart-1: oklch(0.869 0.005 56.366);
-  --chart-2: oklch(0.553 0.013 58.071);
-  --chart-3: oklch(0.444 0.011 73.639);
-  --chart-4: oklch(0.374 0.01 67.558);
-  --chart-5: oklch(0.268 0.007 34.298);
+  /* same hues stepped for the dark card; all ≥ 3:1 */
+  --chart-1: #3987e5;
+  --chart-2: #d95926;
+  --chart-3: #199e70;
+  --chart-4: #c98500;
+  --chart-5: #d55181;
   --sidebar: oklch(0.216 0.006 56.043);
   --sidebar-foreground: oklch(0.985 0.001 106.423);
   --sidebar-primary: var(--primary);

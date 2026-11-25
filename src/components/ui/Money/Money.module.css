@@ -1,0 +1,8 @@
+/* Money: aligned digits so amounts line up in columns. */
+@reference "../../../app/globals.css";
+
+@layer components {
+  .money {
+    @apply whitespace-nowrap tabular-nums;
+  }
+}

@@ -166,6 +166,19 @@ import {
   RadioGroupDemo,
   SpinnerDemo,
 } from "./gallery-phase2"
+import {
+  AccordionDemo,
+  ChartDemo,
+  DataTableDemo,
+  FileDropzoneDemo,
+  MoneyDemo,
+  ProgressDemo,
+  ResponsiveDialogDemo,
+  StatCardDemo,
+  StatusBadgeDemo,
+  TimelineDemo,
+  ToggleGroupDemo,
+} from "./gallery-round2"
 
 /* ------------------------------ data ------------------------------ */
 
@@ -568,6 +581,12 @@ export function ComponentGallery() {
           >
             <DatePickerDemo />
           </Demo>
+          <Demo
+            name="FileDropzone"
+            description="ลากหรือเลือกรูป ดูตัวอย่างก่อนส่ง"
+          >
+            <FileDropzoneDemo />
+          </Demo>
         </Section>
 
         {/* ============================ data ============================ */}
@@ -757,6 +776,48 @@ export function ComponentGallery() {
           <Demo name="Pagination" description="แบ่งหน้าใต้ตารางยาว" wide>
             <PaginationDemo />
           </Demo>
+
+          <Demo
+            name="DataTable"
+            description="ตารางที่กรอง เรียง แบ่งหน้าได้ บนมือถือเป็นการ์ด"
+            wide
+          >
+            <DataTableDemo />
+          </Demo>
+          <Demo
+            name="StatCard + Money"
+            description="ตัวเลข KPI และจำนวนเงินบาท"
+            wide
+          >
+            <StatCardDemo />
+            <MoneyDemo />
+          </Demo>
+          <Demo
+            name="Chart"
+            description="กราฟเก็บได้เทียบค้างชำระ (สี --chart-1, --chart-2)"
+            wide
+          >
+            <ChartDemo />
+          </Demo>
+          <Demo
+            name="StatusBadge"
+            description="สถานะทั้งหมดของแอป: สี + ไอคอน + ข้อความ"
+            wide
+          >
+            <StatusBadgeDemo />
+          </Demo>
+          <Demo name="Progress" description="แถบความคืบหน้า / อัตราส่วน">
+            <ProgressDemo />
+          </Demo>
+          <Demo name="ToggleGroup" description="ปุ่มเลือก 1 แบบแถบ ใช้กรอง">
+            <ToggleGroupDemo />
+          </Demo>
+          <Demo name="Accordion" description="หัวข้อที่กดเปิดดูรายละเอียด">
+            <AccordionDemo />
+          </Demo>
+          <Demo name="Timeline" description="ประวัติเหตุการณ์ตามเวลา">
+            <TimelineDemo />
+          </Demo>
         </Section>
 
         {/* ============================ overlays ============================ */}
@@ -896,6 +957,13 @@ export function ComponentGallery() {
             description="แผ่นเลื่อนจากล่าง ปัดลงเพื่อปิด (เหมาะกับมือถือ)"
           >
             <DrawerDemo />
+          </Demo>
+
+          <Demo
+            name="ResponsiveDialog"
+            description="Dialog บนจอใหญ่ / Drawer บนมือถือ (ลองย่อจอ)"
+          >
+            <ResponsiveDialogDemo />
           </Demo>
 
           <Demo name="Sonner (toast)" description="ข้อความแจ้งผลชั่วคราว">
