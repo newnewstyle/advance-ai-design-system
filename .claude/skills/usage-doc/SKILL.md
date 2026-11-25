@@ -29,9 +29,11 @@ Done when you can name every prop and value that exists, every token the CSS rea
 **Spec** (`<Name>.spec.ts`, `export const <name>Spec = { … } satisfies ComponentSpec`):
 
 - `purpose`: one line.
+- `keywords`: words someone types when they need this component, Thai and English (`"บันทึก"`, `"submit"`).
 - `whenToUse`: situations from real usage, each with the variant/size to pick.
 - `whenNotToUse`: cases where something else fits, and what to use instead.
 - `decisions`: deliberate choices and why, so nobody undoes them by accident.
+- `accessibility`: one entry per WCAG 2.2 AA criterion that applies (contrast, target size, focus, keyboard, name/role), each with a status and its evidence. `pass` needs a number or a behaviour you measured in Storybook; what holds only when the caller adds something (`aria-label`, text beside an icon) is `conditional`; what you did not measure is `not-checked`.
 - `todos`: anything you are unsure about or still undecided. A guess written as fact is worse than a TODO.
 
 **Manual** (`<Name>.md`): `# <Name>`, a one-line intro, the pointer to the spec, then

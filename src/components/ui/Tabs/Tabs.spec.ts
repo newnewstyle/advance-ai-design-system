@@ -9,6 +9,17 @@ export const tabsSpec = {
   purpose:
     "แบ่งเนื้อหาของเรื่องเดียวกันเป็นหลายหมวด ให้ดูทีละหมวดในพื้นที่เดิมโดยไม่ต้องเปลี่ยนหน้า",
 
+  keywords: [
+    "แท็บ",
+    "หมวด",
+    "สลับหมวด",
+    "ข้อมูลส่วนตัว",
+    "ตั้งค่า",
+    "tabs",
+    "tab bar",
+    "segmented",
+  ],
+
   whenToUse: [
     {
       situation:
@@ -72,6 +83,34 @@ export const tabsSpec = {
     {
       rule: "แท็บที่มีฟอร์มต้องใส่ `keepMounted` ที่ `TabsContent` ของแท็บนั้น แท็บอื่นไม่ต้องใส่",
       why: "ปกติเนื้อหาของแท็บที่ซ่อนอยู่ถูกเอาออกจากหน้า ข้อมูลที่กรอกไว้แต่ยังไม่บันทึกจะหายเมื่อสลับแท็บ `keepMounted` เก็บไว้แค่ซ่อน แต่ไม่ใส่ทุกแท็บ เพราะแท็บที่มีกราฟถ้าวาดตอนซ่อนอยู่จะได้ขนาด 0 และแสดงผิด",
+    },
+  ],
+
+  accessibility: [
+    {
+      criterion: "1.4.3 Contrast (Minimum)",
+      status: "pass",
+      note: "ตัวอักษรแท็บที่ไม่ได้เลือก: `default` 5.10 / 5.87, `line` 5.24 / 7.64 (สว่าง / มืด วัดในหน้า Storybook จริง)",
+    },
+    {
+      criterion: "2.1.1 Keyboard",
+      status: "pass",
+      note: "กด Tab เข้าแถบ ลูกศรย้ายระหว่างแท็บ กด Enter หรือ Space เพื่อเปิด",
+    },
+    {
+      criterion: "4.1.2 Name, Role, Value",
+      status: "pass",
+      note: "Base UI ตั้ง role tablist / tab / tabpanel และผูกแท็บกับเนื้อหาให้",
+    },
+    {
+      criterion: "2.4.7 Focus Visible",
+      status: "pass",
+      note: "แท็บที่ focus อยู่มีวงและเส้นขอบสี focus",
+    },
+    {
+      criterion: "2.5.8 Target Size (Minimum)",
+      status: "pass",
+      note: "แท็บแนวนอนสูง 25px",
     },
   ],
 

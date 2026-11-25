@@ -80,7 +80,7 @@ Adding a shadcn component: `npx shadcn@latest add <name>` drops a lowercase `src
 
 ### Design system rules
 
-- **Read the component's docs first.** Before using a component, or changing anything in its folder, read what exists of: `<Name>.spec.ts` (usage and decision rules: when to use, when not to, deliberate choices; the single source for them) and `<Name>.md` (props, tokens, example). Button, Badge, Dialog and Tabs have both (plus `<Name>.types.ts`); other components have none yet. Write or rewrite them with the `/usage-doc <Name>` skill.
+- **Read the component's docs first.** Before using a component, or changing anything in its folder, read what exists of: `<Name>.spec.ts` (usage and decision rules: keywords, when to use, when not to, deliberate choices, WCAG checks; the single source for them) and `<Name>.md` (props, tokens, example). Button, Badge, Dialog and Tabs have both (plus `<Name>.types.ts`); other components have none yet. Write or rewrite them with the `/usage-doc <Name>` skill.
 - **Docs and stories change together.** Whenever you change a component's `<Name>.md` or `<Name>.spec.ts`, update `<Name>.stories.tsx` in the same change, and the reverse:
   - every variant, size, prop and state the docs list has a story or a control, and nothing the stories show is missing from the docs;
   - the example in part 6 is copied from a story; if that story changes, update the example;

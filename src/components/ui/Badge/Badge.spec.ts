@@ -9,6 +9,19 @@ export const badgeSpec = {
   purpose:
     "ป้ายเล็กที่บอกสถานะหรือหมวดหมู่ของข้อมูล ให้อ่านแล้วรู้ทันทีโดยไม่ต้องกด",
 
+  keywords: [
+    "ป้าย",
+    "สถานะ",
+    "ชำระแล้ว",
+    "ค้างชำระ",
+    "ว่าง",
+    "หมวดหมู่",
+    "badge",
+    "tag",
+    "label",
+    "status",
+  ],
+
   whenToUse: [
     {
       situation: "สถานะระดับ **เรียบร้อย**: ชำระแล้ว, มีผู้เช่า, เสร็จแล้ว",
@@ -86,6 +99,34 @@ export const badgeSpec = {
     {
       rule: "สถานะเรียบร้อยเป็นสีเขียว",
       why: "ทีมเลือกเพราะดูดีและให้ความรู้สึกบวก ข้อแลกคือตารางที่ส่วนใหญ่ชำระแล้วจะเขียวเยอะ ถ้าใช้จริงแล้วรก ทางสำรองคือป้ายเทาที่ไอคอนเป็นเขียว",
+    },
+  ],
+
+  accessibility: [
+    {
+      criterion: "1.4.3 Contrast (Minimum)",
+      status: "pass",
+      note: "ทุก variant อย่างน้อย 4.5:1 บนพื้น Card ต่ำสุดคือ `destructive` 4.83 (โหมดสว่าง) ค่าของแต่ละ variant อยู่ในส่วนที่ 4",
+    },
+    {
+      criterion: "1.4.1 Use of Color",
+      status: "conditional",
+      note: "Badge สถานะต้องมีข้อความทุกครั้ง (และไอคอน) ไม่บอกสถานะด้วยสีอย่างเดียว",
+    },
+    {
+      criterion: "1.1.1 Non-text Content",
+      status: "conditional",
+      note: "ไอคอนสถานะใส่ `aria-hidden` เพราะข้อความบอกความหมายครบแล้ว",
+    },
+    {
+      criterion: "2.5.8 Target Size (Minimum)",
+      status: "conditional",
+      note: "Badge ที่เป็นลิงก์สูง 20px ต่ำกว่า 24px ผ่านได้ด้วยข้อยกเว้นระยะห่าง: ห้ามมีสิ่งอื่นที่กดได้อยู่ในวงกลม 24px รอบป้าย",
+    },
+    {
+      criterion: "2.4.7 Focus Visible",
+      status: "pass",
+      note: "Badge ที่เป็นลิงก์มีวง focus เมื่อกด Tab มาถึง",
     },
   ],
 

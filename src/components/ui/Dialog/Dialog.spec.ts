@@ -9,6 +9,17 @@ export const dialogSpec = {
   purpose:
     "หน้าต่างลอยกลางจอที่บังหน้าหลักไว้ ให้ผู้ใช้ทำงานสั้นๆ หนึ่งอย่างให้เสร็จก่อนกลับไปทำต่อ",
 
+  keywords: [
+    "หน้าต่าง",
+    "ป๊อปอัป",
+    "ฟอร์มสั้น",
+    "เพิ่ม",
+    "แก้ไข",
+    "dialog",
+    "modal",
+    "popup",
+  ],
+
   whenToUse: [
     {
       situation:
@@ -82,6 +93,39 @@ export const dialogSpec = {
     {
       rule: "ขนาดเดียว: กว้างสูงสุด 384px",
       why: "พอสำหรับฟอร์มคอลัมน์เดียวในเฟส 2 ถ้าเจอฟอร์มที่แคบจริงค่อยเพิ่มขนาด `lg` ส่วนฟอร์มที่ต้องกว้างกว่านี้ควรเป็นหน้าแยกอยู่แล้ว",
+    },
+  ],
+
+  accessibility: [
+    {
+      criterion: "4.1.2 Name, Role, Value",
+      status: "conditional",
+      note: 'ต้องใช้ `DialogTitle` เสมอ โปรแกรมอ่านหน้าจอใช้เป็นชื่อของ Dialog ปุ่ม X มีชื่อ "ปิด" ให้แล้ว',
+    },
+    {
+      criterion: "2.1.2 No Keyboard Trap",
+      status: "pass",
+      note: "ตอนเปิด Tab วนอยู่ในกล่อง (ตั้งใจ) และออกได้เสมอด้วย Esc",
+    },
+    {
+      criterion: "2.4.3 Focus Order",
+      status: "pass",
+      note: "เปิดแล้ว focus ไปที่ช่องแรกที่กดได้ ปิดแล้ว focus กลับไปที่ปุ่มที่เปิด",
+    },
+    {
+      criterion: "1.4.3 Contrast (Minimum)",
+      status: "pass",
+      note: "หัวเรื่อง 19.75 / 16.76, คำอธิบาย 4.81 / 6.76 (สว่าง / มืด คำนวณจากค่า token)",
+    },
+    {
+      criterion: "2.5.8 Target Size (Minimum)",
+      status: "pass",
+      note: "ปุ่ม X ขนาด 28×28px ปุ่มท้าย Dialog สูง 32px",
+    },
+    {
+      criterion: "1.4.10 Reflow",
+      status: "not-checked",
+      note: "ยังไม่ได้ทดสอบที่จอกว้าง 320px ดู TODO เรื่องมือถือ",
     },
   ],
 

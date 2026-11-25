@@ -9,6 +9,21 @@ export const buttonSpec = {
   purpose:
     "ปุ่มที่ผู้ใช้กดเพื่อสั่งให้เกิด action ในหน้านั้น เช่น บันทึก ส่ง ลบ เปิดหน้าต่าง",
 
+  keywords: [
+    "ปุ่ม",
+    "บันทึก",
+    "ส่ง",
+    "ยืนยัน",
+    "ยกเลิก",
+    "ลบ",
+    "เพิ่ม",
+    "button",
+    "submit",
+    "action",
+    "cta",
+    "loading",
+  ],
+
   whenToUse: [
     {
       situation: "action หลักของฟอร์มหรือหน้า (มีได้ 1 ปุ่มต่อพื้นที่)",
@@ -99,6 +114,34 @@ export const buttonSpec = {
     {
       rule: 'Button ที่ทำเป็นลิงก์ต้องใส่ `role="link"` เอง คู่กับ `nativeButton={false}`',
       why: 'Base UI ใส่ `role="button"` ให้ทุกปุ่มที่ไม่ใช่ `<button>` โปรแกรมอ่านหน้าจอจึงอ่านว่า "ปุ่ม" ทั้งที่พาไปหน้าอื่น (ไม่ผ่าน WCAG 4.1.2) `role` ที่ส่งเองจะทับค่านั้น เลือกวิธีนี้แทนการแยก component ลิงก์หน้าตาปุ่ม เพราะตอนนี้ใช้แค่ 2 จุด ถ้าใช้มากขึ้นค่อยแยก',
+    },
+  ],
+
+  accessibility: [
+    {
+      criterion: "1.4.3 Contrast (Minimum)",
+      status: "pass",
+      note: "ตัวอักษรทุก variant อย่างน้อย 4.5:1 ต่ำสุดคือ `link` 4.61 (โหมดสว่าง) ค่าของแต่ละ variant อยู่ในส่วนที่ 4",
+    },
+    {
+      criterion: "2.5.8 Target Size (Minimum)",
+      status: "conditional",
+      note: "ทุก size สูงอย่างน้อย 24px (`xs` และ `icon-xs` สูง 24px พอดี) ยกเว้น `link` ที่ไม่มีความสูง ต้องอยู่ในประโยคหรือเว้นระยะรอบๆ 24px",
+    },
+    {
+      criterion: "2.4.7 Focus Visible",
+      status: "pass",
+      note: "กด Tab มาถึงมีวง focus ทุก variant (ปุ่มแดงใช้วงสีแดง)",
+    },
+    {
+      criterion: "4.1.2 Name, Role, Value",
+      status: "conditional",
+      note: 'ปุ่มที่มีแต่ไอคอนต้องใส่ `aria-label` ภาษาไทย ปุ่มที่เป็นลิงก์ต้องใส่ `role="link"` ส่วน `loading` ตั้ง `aria-busy` ให้เอง',
+    },
+    {
+      criterion: "1.4.11 Non-text Contrast",
+      status: "not-checked",
+      note: "ยังไม่ได้วัดเส้นขอบของ `outline` และวง focus เทียบกับพื้น",
     },
   ],
 

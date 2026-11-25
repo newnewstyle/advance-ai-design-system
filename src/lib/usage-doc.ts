@@ -1,9 +1,17 @@
 import setupMd from "@/components/ui/SETUP.md?raw"
-import type { ComponentSpec } from "@/lib/component-spec"
+import type { AccessibilityStatus, ComponentSpec } from "@/lib/component-spec"
 
 /** Escapes characters that would break a Markdown table cell. */
 function cell(text: string): string {
   return text.replace(/\|/g, "\\|").replace(/\r?\n/g, " ")
+}
+
+/** Thai label for each status; the icon keeps it readable without colour. */
+const STATUS_LABEL: Record<AccessibilityStatus, string> = {
+  pass: "✅ ผ่าน",
+  conditional: "⚠️ ผ่านถ้าใช้ถูก",
+  fail: "❌ ไม่ผ่าน",
+  "not-checked": "❔ ยังไม่ได้ตรวจ",
 }
 
 /** Parts 1–3 of the usage doc, rendered from the component's spec. */
@@ -12,6 +20,8 @@ function specToMarkdown(spec: ComponentSpec): string {
     "## 1. Purpose",
     "",
     spec.purpose,
+    "",
+    `**คำค้น:** ${spec.keywords.join(", ")}`,
     "",
     "## 2. When to use (ควรใช้ตอนไหน)",
     "",
@@ -28,6 +38,15 @@ function specToMarkdown(spec: ComponentSpec): string {
     "### การตัดสินใจ (ตั้งใจ)",
     "",
     ...spec.decisions.map((d) => `- **${d.rule}**: ${d.why}`),
+    "",
+    "### Accessibility (WCAG 2.2 AA)",
+    "",
+    "| เกณฑ์ | ผล | หลักฐาน / เงื่อนไข |",
+    "| --- | --- | --- |",
+    ...spec.accessibility.map(
+      (a) =>
+        `| ${cell(a.criterion)} | ${STATUS_LABEL[a.status]} | ${cell(a.note)} |`
+    ),
     "",
   ]
   if (spec.todos.length > 0) {
