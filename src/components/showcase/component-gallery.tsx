@@ -305,6 +305,7 @@ export function ComponentGallery() {
                 variant="ghost"
                 size="sm"
                 nativeButton={false}
+                role="link"
                 render={<a href={`#${s.id}`} />}
               >
                 {s.title}
@@ -325,6 +326,7 @@ export function ComponentGallery() {
           <Button
             size="sm"
             nativeButton={false}
+            role="link"
             render={<Link href="/dashboard" />}
           >
             เข้าสู่ระบบจัดการ

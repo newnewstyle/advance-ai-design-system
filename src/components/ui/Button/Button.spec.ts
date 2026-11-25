@@ -57,7 +57,7 @@ export const buttonSpec = {
     {
       case: "พาไปหน้าอื่น (เปลี่ยน URL)",
       instead:
-        "ใช้ลิงก์ (`<Link>`) ถ้าอยากให้หน้าตาเป็นปุ่ม ดู TODO ด้านล่างก่อน",
+        'ลิงก์ (`<Link>`) ถ้าอยากให้หน้าตาเป็นปุ่ม ทำ Button เป็นลิงก์ด้วย `render={<Link href="…" />}` + `nativeButton={false}` + `role="link"`',
     },
     {
       case: "เปิด/ปิดค่า",
@@ -96,9 +96,11 @@ export const buttonSpec = {
       rule: "`destructive-solid` ใช้เฉพาะปุ่มยืนยันลบใน AlertDialog",
       why: "แดงทึบต้องเด่นที่สุดตอนที่ย้อนกลับไม่ได้ ถ้าใช้บ่อยจะหมดความหมาย",
     },
+    {
+      rule: 'Button ที่ทำเป็นลิงก์ต้องใส่ `role="link"` เอง คู่กับ `nativeButton={false}`',
+      why: 'Base UI ใส่ `role="button"` ให้ทุกปุ่มที่ไม่ใช่ `<button>` โปรแกรมอ่านหน้าจอจึงอ่านว่า "ปุ่ม" ทั้งที่พาไปหน้าอื่น (ไม่ผ่าน WCAG 4.1.2) `role` ที่ส่งเองจะทับค่านั้น เลือกวิธีนี้แทนการแยก component ลิงก์หน้าตาปุ่ม เพราะตอนนี้ใช้แค่ 2 จุด ถ้าใช้มากขึ้นค่อยแยก',
+    },
   ],
 
-  todos: [
-    'ปุ่มที่ทำเป็นลิงก์ (`render={<Link />}` + `nativeButton={false}`) ยังได้ `role="button"` จาก Base UI โปรแกรมอ่านหน้าจอจึงอ่านว่า "ปุ่ม" ทั้งที่พาไปหน้าอื่น (ตรวจแล้วใน story `AsLink` และพบใน gallery 2 จุด) ต้องตัดสินว่าจะใส่ `role="link"` ทับ, ทำ component ลิงก์หน้าตาปุ่มแยกต่างหาก หรือยอมรับไว้',
-  ],
+  todos: [],
 } satisfies ComponentSpec

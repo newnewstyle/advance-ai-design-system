@@ -130,10 +130,14 @@ export const ClassNameOverride: Story = {
   args: { className: "w-64 rounded-full", children: "ส่งข้อความเตือน" },
 }
 
-/** Navigation that looks like a button. Renders an <a>, but Base UI still sets role="button" (see the TODO in Button.spec.ts). */
+/**
+ * Navigation that looks like a button. Renders an <a>; role="link" overrides
+ * the role="button" Base UI adds, so screen readers say "link".
+ */
 export const AsLink: Story = {
   args: {
     nativeButton: false,
+    role: "link",
     render: <a href="#dashboard" />,
     children: "ไปหน้าภาพรวม",
   },

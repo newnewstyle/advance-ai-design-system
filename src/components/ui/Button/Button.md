@@ -31,7 +31,21 @@
    import type { ButtonVariant } from "@/components/ui/Button"
    ```
 
-4. ปรับหน้าตาเฉพาะจุดด้วย `className` เช่น `className="w-full"` ส่วนสีให้เปลี่ยนที่ token ไม่ใช่ใส่สีเอง
+4. ปุ่มที่พาไปหน้าอื่น ทำเป็นลิงก์ ใส่ครบ 3 อย่าง: `render`, `nativeButton={false}` และ `role="link"`
+
+   ```tsx
+   import Link from "next/link"
+
+   ;<Button
+     nativeButton={false}
+     role="link"
+     render={<Link href="/dashboard" />}
+   >
+     ไปหน้าภาพรวม
+   </Button>
+   ```
+
+5. ปรับหน้าตาเฉพาะจุดด้วย `className` เช่น `className="w-full"` ส่วนสีให้เปลี่ยนที่ token ไม่ใช่ใส่สีเอง
 
 ---
 
@@ -73,7 +87,7 @@
 
 - **ไอคอนคู่ข้อความ:** ใส่ `data-icon="inline-start"` (ไอคอนอยู่หน้า) หรือ `"inline-end"` (อยู่หลัง) บนไอคอน ปุ่มจะปรับระยะขอบฝั่งนั้นให้สมดุล
 - **ปุ่มที่มีแต่ไอคอน:** ต้องมี `aria-label` ภาษาไทยเสมอ เช่น `aria-label="แก้ไข"`
-- **ทำปุ่มเป็นลิงก์:** `render={<Link href="…" />}` คู่กับ `nativeButton={false}` (ยังถูกอ่านว่า "ปุ่ม" อยู่ ดู TODO ใน spec)
+- **ทำปุ่มเป็นลิงก์:** `render={<Link href="…" />}` คู่กับ `nativeButton={false}` และ `role="link"` (ดูตัวอย่างใน story `AsLink`)
 
 **สถานะอื่นที่เกิดเอง:** กด Tab มาถึงจะมีวง focus (ปุ่มแดงใช้วงสีแดง), ตอนกดปุ่มเลื่อนลง 1px, ตอนเป็นตัวเปิดเมนูที่เปิดอยู่ `outline` กับ `ghost` จะค้างสีพื้นไว้
 
