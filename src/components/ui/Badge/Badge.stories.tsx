@@ -7,10 +7,12 @@ import {
   ClockIcon,
 } from "lucide-react"
 
-import { Badge, type BadgeVariant } from "./Badge"
 import { usageDoc } from "@/lib/usage-doc"
 
+import { Badge } from "./Badge"
 import usage from "./Badge.md?raw"
+import { badgeSpec } from "./Badge.spec"
+import type { BadgeVariant } from "./Badge.types"
 
 const variants: BadgeVariant[] = [
   "default",
@@ -25,9 +27,17 @@ const meta = {
   title: "Components/Badge",
   component: Badge,
   tags: ["autodocs"],
-  parameters: { docs: { description: { component: usageDoc(usage) } } },
+  parameters: {
+    docs: { description: { component: usageDoc(usage, badgeSpec) } },
+  },
   args: { children: "ใหม่", variant: "default" },
-  argTypes: { variant: { control: "select", options: variants } },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: variants,
+      description: "สีของป้าย: เลือกตามระดับสถานะ หรือหมวดหมู่",
+    },
+  },
 } satisfies Meta<typeof Badge>
 
 export default meta
