@@ -702,7 +702,7 @@ export function ComponentGallery() {
         {/* ============================ overlays ============================ */}
         <Section id="overlays" title="หน้าต่างและเมนู">
           <Demo name="Dialog" description="หน้าต่างซ้อน สำหรับฟอร์มสั้นๆ">
-            <Dialog>
+            <Dialog disablePointerDismissal>
               <DialogTrigger render={<Button variant="outline" />}>
                 <PlusIcon data-icon="inline-start" />
                 เพิ่มผู้เช่า

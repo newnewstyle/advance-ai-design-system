@@ -24,7 +24,7 @@ const meta = {
   tags: ["autodocs"],
   args: { showCloseButton: true, footerCloseButton: false },
   render: ({ showCloseButton, footerCloseButton }) => (
-    <Dialog>
+    <Dialog disablePointerDismissal>
       <DialogTrigger render={<Button variant="outline" />}>
         <PlusIcon data-icon="inline-start" />
         เพิ่มผู้เช่า
@@ -62,4 +62,34 @@ export const Default: Story = {}
 /** No X in the corner; the footer gets a "ปิด" button instead. */
 export const FooterCloseButton: Story = {
   args: { showCloseButton: false, footerCloseButton: true },
+}
+
+/** Long content: only the body scrolls; title and footer stay in view. */
+export const LongContent: Story = {
+  render: () => (
+    <Dialog disablePointerDismissal>
+      <DialogTrigger render={<Button variant="outline" />}>
+        ดูเงื่อนไขการเช่า
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>เงื่อนไขการเช่า</DialogTitle>
+          <DialogDescription>อ่านให้ครบก่อนยืนยัน</DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-3">
+          {Array.from({ length: 30 }, (_, i) => (
+            <p key={i}>
+              ข้อ {i + 1}. ผู้เช่าต้องชำระค่าเช่าภายในวันที่ 5 ของทุกเดือน
+            </p>
+          ))}
+        </div>
+        <DialogFooter>
+          <DialogClose render={<Button variant="outline" />}>
+            ยกเลิก
+          </DialogClose>
+          <DialogClose render={<Button />}>ยอมรับ</DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
 }
