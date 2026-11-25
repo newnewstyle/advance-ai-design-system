@@ -101,7 +101,7 @@ export function LoginForm() {
           ยังไม่มีบัญชี?{" "}
           <Link
             href="/register"
-            className="font-medium text-primary underline-offset-4 hover:underline"
+            className="font-medium text-link underline-offset-4 hover:underline"
           >
             สมัครสมาชิก
           </Link>
